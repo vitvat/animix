@@ -12,6 +12,11 @@ class CreatureForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['father'].widget.can_add_related = False
         self.fields['mother'].widget.can_add_related = False
+        if self.instance and self.instance.pk:
+            self.fields['mother'].widget.attrs['data-current-value'] = self.instance.mother_id
+
+    class Media:
+        js = ('admin/js/custom_admin.js',)
 
 
 class GenAdmin(admin.ModelAdmin):

@@ -14,7 +14,7 @@ class Gen(models.Model):
     rank = models.IntegerField(choices=[(i, i) for i in range(2, 8)])
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    mother_only = models.BooleanField(default=False)
+    father_only = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
